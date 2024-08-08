@@ -11,27 +11,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xgdkk")
-container = NodePath("VB")
+container = NodePath("ScrollContainer/VB")
 goal = ExtResource("2_4xiwh")
-text_input = NodePath("VB/HB/LineEdit")
+text_input = NodePath("ScrollContainer/VB/HB/LineEdit")
 
-[node name="VB" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -325.0
-offset_top = -1000.0
-offset_right = 325.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(674, 900)
+layout_mode = 2
+offset_left = 19.0
+offset_top = 356.0
+offset_right = 701.0
+offset_bottom = 1256.0
+horizontal_scroll_mode = 0
 
-[node name="HB" type="HBoxContainer" parent="VB"]
+[node name="VB" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="VB/HB"]
+[node name="HB" type="HBoxContainer" parent="ScrollContainer/VB"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VB/HB"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -40,7 +39,7 @@ alignment = 2
 clear_button_enabled = true
 select_all_on_focus = true
 
-[node name="AddGoal" type="Button" parent="VB/HB"]
+[node name="AddGoal" type="Button" parent="ScrollContainer/VB/HB"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -48,7 +47,7 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 46
 text = "+"
 
-[node name="Goal" parent="VB" instance=ExtResource("2_4xiwh")]
+[node name="Goal" parent="ScrollContainer/VB" instance=ExtResource("2_4xiwh")]
 layout_mode = 2
 
-[connection signal="pressed" from="VB/HB/AddGoal" to="." method="_on_add_goal_pressed"]
+[connection signal="pressed" from="ScrollContainer/VB/HB/AddGoal" to="." method="_on_add_goal_pressed"]
